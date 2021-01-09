@@ -42,13 +42,17 @@ class bin(pygame.sprite.Sprite):
         self.image = pygame.image.load("bin.jpg")
         self.surface = pygame.Surface((100,100))
         self.rectangle = self.surface.get_rect()
+        ## need to create coordinates to keep track of the position and make starting coordinates
     
     def move(self):
         pressed_key = pygame.key.get_pressed()
-        if pressed_key[K_LEFT] & self.rect.left>0:
+        if pressed_key==K_LEFT & self.rect.left>0:
             self.rect.move_ip(-5,0)
-        if pressed_key[K_RIGHT] & self.rect.left>0:
+            ## need to update the coordinates
+        if pressed_key==K_RIGHT & self.rect.left>0:
             self.rect.move_ip(5,0)
+            ## need to update the coordinates
+            ## also might need to safeguard against running off the screen on the right side
     
 
         
