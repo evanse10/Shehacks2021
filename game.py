@@ -29,7 +29,8 @@ font_style = pygame.font.SysFont(None, 30)
 enviro_facts = ["The average college student produces 640 pounds of solid waste each year", 
 "By 2050, the ocean will contain more plastic by weight than fish",
 "In 2018, Americans disposed of 146.2 million tons of trash - 24% was food waste",
-"The Great Pacific Garbage Patch contains almost 3.5 million tons of trash"]
+"The Great Pacific Garbage Patch contains almost 3.5 million tons of trash",
+"Roughly 80% of the items in lanfill could be recycled :o"]
 
  
 def message(msg, color):
@@ -62,14 +63,16 @@ def gameLoop():  # creating a function
     while not game_over:
  
         if game_close == True:
-            index = random.randint(0,3)
+            index = random.randint(0,4)
         
         while game_close == True:
             dis.fill(white)
 
             end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, red)
             fact = font_style.render(enviro_facts[index], True, blue)
+            end_score = font_style.render("Final score: " +str(score-1), True, red)
             dis.blit(end, [30,60])
+            dis.blit(end_score, [30,80])
             dis.blit(fact, [0,30])
             
             pygame.display.update()
