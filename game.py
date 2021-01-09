@@ -1,5 +1,11 @@
 ## game functions:
 ##display
+##facts about the environment
+##garbage: falling, speed
+##bins: moving left/right
+##did the garbage make it in the bin?
+##number of lives - maybe we should take this out so we can display our garbage facts more often?
+##score/how much garbage was collected
 
 ## FACTS
 ## The average college student produces 640 pounds of solid waste each year, including rougly 500 disposable cups and 320 pounds of paper
@@ -26,6 +32,17 @@ def display():
     while True:
         dis = pygame.display.set_mode((600, 600))
         pygame.display.set_caption("Shehacks 2021")
+
+class bin():
+    def __init__(self):
+        self.image = pygame.image.load("bin.jpg")
+        self.surface = pygame.Surface((100,100))
+        self.rectangle = self.surface.get_rect()
+    
+    def move(self):
+        pressed_key = pygame.ket.get_pressed()
+        
+
         
 
 
