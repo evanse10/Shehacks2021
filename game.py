@@ -9,8 +9,8 @@ black = (0, 0, 0)
 red = (255, 0, 0)
 blue = (0, 0, 255)
  
-dis_width = 600
-dis_height = 800
+dis_width = 800
+dis_height = 600
  
 dis = pygame.display.set_mode((dis_width, dis_height))
 pygame.display.set_caption('collect the trash')
@@ -36,7 +36,7 @@ def dis_score(score):
     dis.blit(value, [0,0])
 
 def recyclebin(x,y):
-    binimage = pygame.transform.rotozoom(image,0,0.0165)
+    binimage = pygame.transform.rotozoom(image,0,0.033)
     dis.blit(binimage,(x,y))
  
 def gameLoop():  # creating a function
@@ -106,7 +106,7 @@ def gameLoop():  # creating a function
         dis_score(score)
         pygame.display.update()
  
-        if x1 == foodx and y1 == foody:
+        if abs(x1 - foodx)<=10 and y1 == foody:
             foodx = round(random.randrange(100, dis_width - snake_block - 100) / 10.0) * 10.0
             foody = 0
             score +=1
