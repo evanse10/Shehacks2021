@@ -125,7 +125,7 @@ def gameLoop():  # creating a function
         dis_score(score-1)
         pygame.display.update()
  
-        if abs(x1 - foodx)<=15 and y1 == foody:
+        if abs(x1 - foodx)<=20 and abs(y1-foody)<=20:
             foodx = round(random.randrange(100, dis_width - snake_block - 100) / 10.0) * 10.0
             foody = 0
             score +=1
