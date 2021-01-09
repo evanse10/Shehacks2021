@@ -19,7 +19,7 @@ import random
  
 pygame.init()
 
-
+## idk what these things are for - I couldn't get the display.fill(blue) to work anyways
 white = (255, 255, 255)
 yellow = (255, 255, 102)
 black = (0, 0, 0)
