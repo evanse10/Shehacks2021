@@ -26,6 +26,11 @@ snake_speed = 15
  
 font_style = pygame.font.SysFont(None, 30)
  
+enviro_facts = ["The average college student produces 640 pounds of solid waste each year", 
+"By 2050, the ocean will contain more plastic by weight than fish",
+"In 2018, Americans disposed of 146.2 million tons of trash - 24% was food waste",
+"The Great Pacific Garbage Patch contains almost 3.5 million tons of trash"]
+
  
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
@@ -52,7 +57,7 @@ def gameLoop():  # creating a function
     foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
     foody = 0
 
-    score = 0
+    score = 1
  
     while not game_over:
  
@@ -75,16 +80,16 @@ def gameLoop():  # creating a function
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     x1_change = -snake_block
-                    food_change = 10
+                    food_change = 10*score**0.2
                     
      
                 elif event.key == pygame.K_RIGHT:
                     x1_change = snake_block
-                    food_change = 10
+                    food_change = 10*score**0.2
                     
             if event.type == pygame.KEYUP:
                 x1_change = 0
-                food_change = 10
+                food_change = 10*score**0.2
  
         if x1 >= dis_width:
             x1_change = -snake_block
@@ -103,10 +108,10 @@ def gameLoop():  # creating a function
         pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block])
         pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])
         recyclebin(x1,y1)
-        dis_score(score)
+        dis_score(score-1)
         pygame.display.update()
  
-        if abs(x1 - foodx)<=10 and y1 == foody:
+        if abs(x1 - foodx)<=15 and y1 == foody:
             foodx = round(random.randrange(100, dis_width - snake_block - 100) / 10.0) * 10.0
             foody = 0
             score +=1
