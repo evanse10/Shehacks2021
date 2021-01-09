@@ -119,7 +119,7 @@ def gameLoop():  # creating a function
         dis_score(score-1)
         pygame.display.update()
  
-        if abs(x1 - trash_x)<=10 and abs(y1-trashy)<= 5:
+        if abs(x1 - trash_x)<=10 and abs(y1-trashy)<= 15:
             trash_x = round(random.randrange(100, dis_width - bin_block - 100) / 10.0) * 10.0
             trashy = 0
             score +=1
