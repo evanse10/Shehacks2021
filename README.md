@@ -1,4 +1,6 @@
 # Shehacks2021
-# test change
-
-hello
+Team members:
+Elizabeth Evans
+Anna La
+Michelle Quong
+Sandhya Atheray
