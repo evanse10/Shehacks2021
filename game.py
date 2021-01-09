@@ -31,16 +31,26 @@ blue = (50, 153, 213)
 def display():
     while True:
         dis = pygame.display.set_mode((600, 600))
+        dis.fill(blue)
+        pygame.display.update()
         pygame.display.set_caption("Shehacks 2021")
+        ## need to add command to quit the screen - this might need to be the main function of the game
 
-class bin():
+class bin(pygame.sprite.Sprite):
     def __init__(self):
+        super().__init__()
         self.image = pygame.image.load("bin.jpg")
         self.surface = pygame.Surface((100,100))
         self.rectangle = self.surface.get_rect()
     
     def move(self):
-        pressed_key = pygame.ket.get_pressed()
+        pressed_key = pygame.key.get_pressed()
+        if pressed_key[K_LEFT] & self.rect.left>0:
+            self.rect.move_ip(-5,0)
+        if pressed_key[K_RIGHT] & self.rect.left>0:
+            self.rect.move_ip(5,0)
+    
+
         
 
         
