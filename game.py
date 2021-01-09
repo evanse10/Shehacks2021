@@ -27,6 +27,10 @@ def message(msg, color):
     mesg = font_style.render(msg, True, color)
     dis.blit(mesg, [dis_width/3, dis_height/3])
  
+def dis_score(score):
+    value = font_style.render("Score: " + str(score), True, red)
+    dis.blit(value, [0,0])
+
  
 def gameLoop():  # creating a function
     game_over = False
@@ -40,6 +44,8 @@ def gameLoop():  # creating a function
  
     foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
     foody = 0
+
+    score = 0
  
     while not game_over:
  
@@ -63,10 +69,14 @@ def gameLoop():  # creating a function
                 if event.key == pygame.K_LEFT:
                     x1_change = -snake_block
                     food_change = 10
+                
      
                 elif event.key == pygame.K_RIGHT:
                     x1_change = snake_block
                     food_change = 10
+            if event.type == pygame.KEYUP:
+                x1_change = 0
+                food_change = 10
  
         if x1 >= dis_width or x1 < 0:
             game_close = True
@@ -80,11 +90,14 @@ def gameLoop():  # creating a function
         dis.fill(white)
         pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block])
         pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])
+        dis_score(score)
         pygame.display.update()
  
         if x1 == foodx and y1 == foody:
             foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
             foody = 0
+            score +=1
+            print(score)
         clock.tick(snake_speed)
  
     pygame.quit()
