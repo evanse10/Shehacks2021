@@ -21,8 +21,8 @@ nature = pygame.transform.rotozoom(background,0,1.75)
  
 clock = pygame.time.Clock()
  
-snake_block = 20
-snake_speed = 15
+bin_block = 20
+bin_speed = 15
  
 font_style = pygame.font.SysFont(None, 30)
  
@@ -52,10 +52,10 @@ def gameLoop():  # creating a function
     y1 = dis_height - 100
  
     x1_change = 0
-    food_change = 0
+    trash_change = 0
  
-    foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-    foody = 0
+    trash_x = round(random.randrange(0, dis_width - bin_block) / 10.0) * 10.0
+    trashy = 0
 
     score = 1
  
@@ -83,50 +83,44 @@ def gameLoop():  # creating a function
                     if event.key == pygame.K_c:
                         gameLoop()
         
-        
- 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game_over = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    x1_change = -snake_block
-                    food_change = 10*score**0.2
+                    x1_change = -bin_block
+                    trash_change = 10*score**0.2
                     
      
                 elif event.key == pygame.K_RIGHT:
-                    x1_change = snake_block
-                    food_change = 10*score**0.2
+                    x1_change = bin_block
+                    trash_change = 10*score**0.2
                     
             if event.type == pygame.KEYUP:
                 x1_change = 0
-                food_change = 10*score**0.2
+                trash_change = 10*score**0.2
  
-        if x1 >= dis_width:
-            x1_change = -snake_block
-        
-        if x1 < 0:
-            x1_change = snake_block
+        if x1 >= dis_width or x1<0:
+            x1_change = 0
 
-        if foody >= dis_height:
+        if trashy >= dis_height:
             game_close = True
             
- 
         x1 += x1_change
-        foody += food_change
+        trashy += trash_change
         dis.fill(white)
         dis.blit(nature,(0,0))
-        pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block])
-        pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])
+        pygame.draw.rect(dis, blue, [trash_x, trashy, bin_block, bin_block])
+        pygame.draw.rect(dis, black, [x1, y1, bin_block, bin_block])
         recyclebin(x1,y1)
         dis_score(score-1)
         pygame.display.update()
  
-        if abs(x1 - foodx)<=20 and abs(y1-foody)<=20:
-            foodx = round(random.randrange(100, dis_width - snake_block - 100) / 10.0) * 10.0
-            foody = 0
+        if abs(x1 - trash_x)<=10 and abs(y1-trashy)<= 5:
+            trash_x = round(random.randrange(100, dis_width - bin_block - 100) / 10.0) * 10.0
+            trashy = 0
             score +=1
-        clock.tick(snake_speed)
+        clock.tick(bin_speed)
  
     pygame.quit()
     quit()
