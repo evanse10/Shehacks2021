@@ -21,7 +21,7 @@ nature = pygame.transform.rotozoom(background,0,1.75)
  
 clock = pygame.time.Clock()
  
-snake_block = 10
+snake_block = 20
 snake_speed = 15
  
 font_style = pygame.font.SysFont(None, 30)
@@ -61,10 +61,19 @@ def gameLoop():  # creating a function
  
     while not game_over:
  
+        if game_close == True:
+            index = random.randint(0,3)
+        
         while game_close == True:
             dis.fill(white)
-            message("You Lost! Press Q-Quit or C-Play Again", red)
+
+            end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, red)
+            fact = font_style.render(enviro_facts[index], True, blue)
+            dis.blit(end, [30,60])
+            dis.blit(fact, [0,30])
+            
             pygame.display.update()
+
  
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
@@ -73,6 +82,8 @@ def gameLoop():  # creating a function
                         game_close = False
                     if event.key == pygame.K_c:
                         gameLoop()
+        
+        
  
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
