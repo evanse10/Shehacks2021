@@ -18,6 +18,7 @@ pygame.display.set_caption('collect the trash')
 image = pygame.image.load("recycling.jpg")
 background = pygame.image.load("naturebackground.jpg")
 nature = pygame.transform.rotozoom(background,0,1.75)
+soda = pygame.image.load("crushedcan.jpg")
  
 clock = pygame.time.Clock()
  
@@ -45,6 +46,10 @@ def recyclebin(x,y):
     binimage = pygame.transform.rotozoom(image,0,0.033)
     dis.blit(binimage,(x,y))
  
+def sodacan(x,y):
+    crushsoda = pygame.transform.rotozoom(soda,0,0.035)
+    dis.blit(crushsoda,(x,y))
+ 
 def gameLoop():  # creating a function
     game_over = False
     game_close = False
@@ -67,6 +72,7 @@ def gameLoop():  # creating a function
         
         while game_close == True:
             dis.fill(white)
+            dis.blit(nature,(0,0))
 
             end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, red)
             fact = font_style.render(enviro_facts[index], True, blue)
@@ -116,6 +122,7 @@ def gameLoop():  # creating a function
         pygame.draw.rect(dis, blue, [trash_x, trashy, bin_block, bin_block])
         pygame.draw.rect(dis, black, [x1, y1, bin_block, bin_block])
         recyclebin(x1,y1)
+        sodacan(foodx,foody)
         dis_score(score-1)
         pygame.display.update()
  
