@@ -14,6 +14,10 @@ dis_height = 800
  
 dis = pygame.display.set_mode((dis_width, dis_height))
 pygame.display.set_caption('collect the trash')
+
+image = pygame.image.load("recycling.jpg")
+background = pygame.image.load("naturebackground.jpg")
+nature = pygame.transform.rotozoom(background,0,1.75)
  
 clock = pygame.time.Clock()
  
@@ -30,6 +34,10 @@ def message(msg, color):
 def dis_score(score):
     value = font_style.render("Score: " + str(score), True, red)
     dis.blit(value, [0,0])
+
+def recyclebin(x,y):
+    binimage = pygame.transform.rotozoom(image,0,0.0165)
+    dis.blit(binimage,(x,y))
  
 def gameLoop():  # creating a function
     game_over = False
@@ -91,8 +99,10 @@ def gameLoop():  # creating a function
         x1 += x1_change
         foody += food_change
         dis.fill(white)
+        dis.blit(nature,(0,0))
         pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block])
         pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])
+        recyclebin(x1,y1)
         dis_score(score)
         pygame.display.update()
  
