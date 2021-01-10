@@ -45,11 +45,11 @@ def dis_score(score):
     dis.blit(value, [0,0])
 
 def recyclebin(x,y):
-    binimage = pygame.transform.rotozoom(image,0,0.033)
+    binimage = pygame.transform.rotozoom(image,0,0.075)
     dis.blit(binimage,(x,y))
  
 def sodacan(x,y):
-    crushsoda = pygame.transform.rotozoom(soda,0,0.035)
+    crushsoda = pygame.transform.rotozoom(soda,0,0.050)
     dis.blit(crushsoda,(x,y))
  
 def gameLoop():  # creating a function
