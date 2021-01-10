@@ -32,7 +32,7 @@ compost = pygame.image.load("compost.png")
 Bin = pygame.image.load("trashBin.jpg")
 clock = pygame.time.Clock()
  
-bin_block = 20
+bin_block = 25
 bin_speed = 15
  
 font_style = pygame.font.SysFont(None, 30)
@@ -40,10 +40,10 @@ font_style = pygame.font.SysFont(None, 30)
 enviro_facts = ["The average college student produces 640 pounds of solid waste each year :o", 
 "By 2050, the ocean will contain more plastic by weight than fish",
 "In 2018, Americans disposed of 146.2 million tons of trash - 24% was food waste",
-"The Great Pacific Garbage Patch contains almost 3.5 million tons of trash",
-"Roughly 80% of the items in lanfill could be recycled :o",
-"The average person generates over 4 pounds of trash every day",
-"1/3 of all the food produced globally goes to waste"]
+"The Great Pacific Garbage Patch contains almost 3.5 million tons of trash :'(",
+"Roughly 80% of the items in landfill could be recycled :o",
+"The average person generates over 4 pounds of trash every day :(",
+"1/3 of all the food produced globally goes to waste :("]
 
  
 def message(msg, color):
@@ -69,20 +69,17 @@ def sodacan(x,y):
 def bananapeel(x,y):
     bananaskin = pygame.transform.rotozoom(banana,0,0.037)
     dis.blit(bananaskin,(x,y))
-<<<<<<< HEAD
-=======
 
 def garbage_bag(x,y):
     trash_bag = pygame.transform.rotozoom(bag,0,0.1)
     dis.blit(trash_bag,(x,y))
->>>>>>> abe44074ddc9811b56fc326c5f22c53c1e8d8c01
 
 def garbageBin(x,y):
     garbage = pygame.transform.rotozoom(Bin, 0, 0.1)
     dis.blit(garbage,(x,y))
    
 def compostBin(x,y):
-    compBin = pygame.transform.rotozoom(compost, 0, 0.350)
+    compBin = pygame.transform.rotozoom(compost, 0, 0.25)
     dis.blit(compBin,(x,y))
  
 def gameLoop():  # creating a function
@@ -113,7 +110,8 @@ def gameLoop():  # creating a function
             dis.blit(nature,(0,0))
 
             end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, red)
-            fact = font_style.render(enviro_facts[index], True, blue)
+            pygame.draw.rect(dis,red,[0,0,800,80])
+            fact = font_style.render(enviro_facts[index], True, white)
             end_score = font_style.render("Final score: " +str(score-1), True, red)
             dis.blit(end, [270,420])
             dis.blit(end_score, [270,450])
@@ -138,10 +136,8 @@ def gameLoop():  # creating a function
                     ##change bin
                     bintype = 0
                 elif event.key == pygame.K_e:
-                    ##change bin
                     bintype = 1
                 elif event.key == pygame.K_w:
-                    ##change bin
                     bintype = 2
                 if event.key == pygame.K_LEFT:
                     x1_change = -bin_block
@@ -169,8 +165,7 @@ def gameLoop():  # creating a function
         trashy += trash_change
         dis.fill(white)
         dis.blit(nature,(0,0))
-        ##pygame.draw.rect(dis, blue, [trash_x, trashy, bin_block, bin_block])
-        ##pygame.draw.rect(dis, black, [x1, y1, bin_block, bin_block])
+        
         if bintype == 0:
             recyclebin(x1,y1)
         elif bintype == 1:
@@ -188,7 +183,7 @@ def gameLoop():  # creating a function
         instruct()
         pygame.display.update()
         
-        if abs(x1 - trash_x)<=15 and abs(y1-trashy)<= 15 and trashtype == bintype:
+        if abs(x1 - trash_x)<=25 and abs(y1-trashy)<= 15 and trashtype == bintype:
             trash_x = round(random.randrange(100, dis_width - bin_block - 100) / 10.0) * 10.0
             trashy = 0
             trashtype = random.randrange(0,3)
