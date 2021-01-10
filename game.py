@@ -31,7 +31,8 @@ enviro_facts = ["The average college student produces 640 pounds of solid waste 
 "By 2050, the ocean will contain more plastic by weight than fish",
 "In 2018, Americans disposed of 146.2 million tons of trash - 24% was food waste",
 "The Great Pacific Garbage Patch contains almost 3.5 million tons of trash",
-"Roughly 80% of the items in lanfill could be recycled :o"]
+"Roughly 80% of the items in lanfill could be recycled :o",
+"The average person generates over 4 pounds of trash every day"]
 
  
 def message(msg, color):
@@ -68,7 +69,7 @@ def gameLoop():  # creating a function
     while not game_over:
  
         if game_close == True:
-            index = random.randint(0,4)
+            index = random.randint(0,5)
         
         while game_close == True:
             dis.fill(white)
@@ -77,8 +78,8 @@ def gameLoop():  # creating a function
             end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, red)
             fact = font_style.render(enviro_facts[index], True, blue)
             end_score = font_style.render("Final score: " +str(score-1), True, red)
-            dis.blit(end, [30,60])
-            dis.blit(end_score, [30,80])
+            dis.blit(end, [170,300])
+            dis.blit(end_score, [170,330])
             dis.blit(fact, [0,30])
             
             pygame.display.update()
