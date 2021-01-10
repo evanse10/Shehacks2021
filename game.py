@@ -65,6 +65,8 @@ def gameLoop():  # creating a function
     trash_x = round(random.randrange(0, dis_width - bin_block) / 10.0) * 10.0
     trashy = 0
 
+    bintype = 0 ##0 for recycling, 1 for compost
+   
     score = 1
  
     while not game_over:
@@ -98,6 +100,12 @@ def gameLoop():  # creating a function
             if event.type == pygame.QUIT:
                 game_over = True
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    ##change bin
+                    bintype = 0
+                elif event.key == pygame.K_e:
+                    ##change bin
+                    bintype = 1  
                 if event.key == pygame.K_LEFT:
                     x1_change = -bin_block
                     trash_change = 10*score**0.2
@@ -126,7 +134,10 @@ def gameLoop():  # creating a function
         dis.blit(nature,(0,0))
         pygame.draw.rect(dis, blue, [trash_x, trashy, bin_block, bin_block])
         pygame.draw.rect(dis, black, [x1, y1, bin_block, bin_block])
-        recyclebin(x1,y1)
+        if bintype == 0:
+            recyclebin(x1,y1)
+        elif bintype == 1:
+            pygame.draw.rect(dis,blue, [trash_x, trashy, bin_block,bin_block])
         sodacan(trash_x,trashy)
         dis_score(score-1)
         pygame.display.update()
