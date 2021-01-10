@@ -49,6 +49,10 @@ def dis_score(score):
     value = font_style.render("Score: " + str(score), True, red)
     dis.blit(value, [0,0])
 
+def instruct():
+    instructions = font_style.render("W = trash, E = compost, R = recycling", True, red)
+    dis.blit(instructions, [0,20])
+
 def recyclebin(x,y):
     binimage = pygame.transform.rotozoom(recycling,0,0.075)
     dis.blit(binimage,(x,y))
@@ -162,6 +166,7 @@ def gameLoop():  # creating a function
         
         
         dis_score(score-1)
+        instruct()
         pygame.display.update()
         
         if abs(x1 - trash_x)<=15 and abs(y1-trashy)<= 15 and trashtype == bintype:
