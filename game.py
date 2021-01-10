@@ -76,11 +76,11 @@ def gameLoop():  # creating a function
             dis.fill(white)
             dis.blit(nature,(0,0))
 
-            end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, black)
+            end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, red)
             fact = font_style.render(enviro_facts[index], True, blue)
-            end_score = font_style.render("Final score: " +str(score-1), True, black)
-            dis.blit(end, [170,300])
-            dis.blit(end_score, [170,330])
+            end_score = font_style.render("Final score: " +str(score-1), True, red)
+            dis.blit(end, [270,420])
+            dis.blit(end_score, [270,450])
             dis.blit(fact, [0,30])
             
             pygame.display.update()
@@ -142,4 +142,3 @@ def gameLoop():  # creating a function
  
  
 gameLoop()
-
