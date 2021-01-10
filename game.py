@@ -109,8 +109,11 @@ def gameLoop():  # creating a function
                 x1_change = 0
                 trash_change = 10*score**0.2
  
-        if x1 >= dis_width or x1<0:
-            x1_change = 0
+        if x1 >= dis_width :
+            x1_change = -bin_block
+        
+        if x1<0:
+            x1_change = bin_block
 
         if trashy >= dis_height:
             game_close = True
