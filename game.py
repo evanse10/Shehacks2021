@@ -23,7 +23,7 @@ soda = pygame.image.load("crushedcan.jpg")
 banana = pygame.image.load("bananapeel.png")
 ##compost =
 ##candy =
-##garbage =
+Bin = pygame.image.load("trashBin.jpg")
  
 clock = pygame.time.Clock()
  
@@ -64,6 +64,10 @@ def sodacan(x,y):
 def bananapeel(x,y):
     bananaskin = pygame.transform.rotozoom(banana,0,0.037)
     dis.blit(bananaskin,(x,y))
+
+def garbageBin(x,y):
+    garbage = pygame.transform.rotozoom(Bin, 0, 0.1)
+    dis.blit(garbage,(x,y))
  
 def gameLoop():  # creating a function
     game_over = False
@@ -156,13 +160,13 @@ def gameLoop():  # creating a function
         elif bintype == 1:
             pygame.draw.rect(dis,black, [x1, y1, bin_block,bin_block])
         elif bintype == 2:
-            pygame.draw.rect(dis,blue, [x1, y1, bin_block,bin_block])
+            garbageBin(x1, y1)
         if trashtype == 0:
             sodacan(trash_x,trashy)
         elif trashtype == 1:
             bananapeel(trash_x,trashy)
         elif trashtype == 2:
-            pygame.draw.rect(dis,red, [trash_x, trashy, bin_block,bin_block])
+            pygame.draw.rect(dis,blue, [trash_x, trashy, bin_block,bin_block])
         
         
         dis_score(score-1)
