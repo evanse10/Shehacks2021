@@ -64,17 +64,14 @@ def sodacan(x,y):
 def bananapeel(x,y):
     bananaskin = pygame.transform.rotozoom(banana,0,0.037)
     dis.blit(bananaskin,(x,y))
-<<<<<<< HEAD
 
 def garbageBin(x,y):
     garbage = pygame.transform.rotozoom(Bin, 0, 0.1)
     dis.blit(garbage,(x,y))
-=======
    
 def compostBin(x,y):
     compBin = pygame.transform.rotozoom(compost, 0, 0.350)
     dis.blit(compBin,(x,y))
->>>>>>> 924ee61d03d0f7d7e4feb73a9e6841e36283a059
  
 def gameLoop():  # creating a function
     game_over = False
