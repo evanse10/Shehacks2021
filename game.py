@@ -31,7 +31,7 @@ enviro_facts = ["The average college student produces 640 pounds of solid waste 
 "By 2050, the ocean will contain more plastic by weight than fish",
 "In 2018, Americans disposed of 146.2 million tons of trash - 24% was food waste",
 "The Great Pacific Garbage Patch contains almost 3.5 million tons of trash",
-"Roughly 80% of the items in lanfill could be recycled :o",
+"Roughly 80% of the items in landfill could be recycled :o",
 "The average person generates over 4 pounds of trash every day",
 "1/3 of all the food produced globally goes to waste"]
 
