@@ -21,8 +21,13 @@ nature = pygame.transform.rotozoom(background,0,1.75)
 recycling = pygame.image.load("recycling.jpg")
 soda = pygame.image.load("crushedcan.jpg")
 banana = pygame.image.load("bananapeel.png")
+<<<<<<< HEAD
 ##compost =
 bag = pygame.image.load("trash.png")
+=======
+compost = pygame.image.load("compost.png")
+##candy =
+>>>>>>> 924ee61d03d0f7d7e4feb73a9e6841e36283a059
 ##garbage =
  
 clock = pygame.time.Clock()
@@ -49,6 +54,10 @@ def dis_score(score):
     value = font_style.render("Score: " + str(score), True, red)
     dis.blit(value, [0,0])
 
+def instruct():
+    instructions = font_style.render("W = trash, E = compost, R = recycling", True, red)
+    dis.blit(instructions, [0,20])
+
 def recyclebin(x,y):
     binimage = pygame.transform.rotozoom(recycling,0,0.075)
     dis.blit(binimage,(x,y))
@@ -60,10 +69,17 @@ def sodacan(x,y):
 def bananapeel(x,y):
     bananaskin = pygame.transform.rotozoom(banana,0,0.037)
     dis.blit(bananaskin,(x,y))
+<<<<<<< HEAD
 
 def garbage_bag(x,y):
     trash_bag = pygame.transform.rotozoom(bag,0,0.1)
     dis.blit(trash_bag,(x,y))
+=======
+   
+def compostBin(x,y):
+    compBin = pygame.transform.rotozoom(compost, 0, 0.350)
+    dis.blit(compBin,(x,y))
+>>>>>>> 924ee61d03d0f7d7e4feb73a9e6841e36283a059
  
 def gameLoop():  # creating a function
     game_over = False
@@ -154,7 +170,7 @@ def gameLoop():  # creating a function
         if bintype == 0:
             recyclebin(x1,y1)
         elif bintype == 1:
-            pygame.draw.rect(dis,black, [x1, y1, bin_block,bin_block])
+            compostBin(x1,y1)
         elif bintype == 2:
             pygame.draw.rect(dis,blue, [x1, y1, bin_block,bin_block])
         if trashtype == 0:
@@ -166,6 +182,7 @@ def gameLoop():  # creating a function
         
         
         dis_score(score-1)
+        instruct()
         pygame.display.update()
         
         if abs(x1 - trash_x)<=15 and abs(y1-trashy)<= 15 and trashtype == bintype:
