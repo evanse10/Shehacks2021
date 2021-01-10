@@ -27,7 +27,7 @@ bin_speed = 15
  
 font_style = pygame.font.SysFont(None, 30)
  
-enviro_facts = ["The average college student produces 640 pounds of solid waste each year", 
+enviro_facts = ["The average college student produces 640 pounds of solid waste each year :o", 
 "By 2050, the ocean will contain more plastic by weight than fish",
 "In 2018, Americans disposed of 146.2 million tons of trash - 24% was food waste",
 "The Great Pacific Garbage Patch contains almost 3.5 million tons of trash",
@@ -45,11 +45,11 @@ def dis_score(score):
     dis.blit(value, [0,0])
 
 def recyclebin(x,y):
-    binimage = pygame.transform.rotozoom(image,0,0.075)
+    binimage = pygame.transform.rotozoom(image,0,0.033)
     dis.blit(binimage,(x,y))
  
 def sodacan(x,y):
-    crushsoda = pygame.transform.rotozoom(soda,0,0.050)
+    crushsoda = pygame.transform.rotozoom(soda,0,0.035)
     dis.blit(crushsoda,(x,y))
  
 def gameLoop():  # creating a function
@@ -70,15 +70,15 @@ def gameLoop():  # creating a function
     while not game_over:
  
         if game_close == True:
-            index = random.randint(0,5)
+            index = random.randint(0,6)
         
         while game_close == True:
             dis.fill(white)
             dis.blit(nature,(0,0))
 
-            end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, red)
+            end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, black)
             fact = font_style.render(enviro_facts[index], True, blue)
-            end_score = font_style.render("Final score: " +str(score-1), True, red)
+            end_score = font_style.render("Final score: " +str(score-1), True, black)
             dis.blit(end, [170,300])
             dis.blit(end_score, [170,330])
             dis.blit(fact, [0,30])
