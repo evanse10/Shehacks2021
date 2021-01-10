@@ -122,7 +122,7 @@ def gameLoop():  # creating a function
         pygame.draw.rect(dis, blue, [trash_x, trashy, bin_block, bin_block])
         pygame.draw.rect(dis, black, [x1, y1, bin_block, bin_block])
         recyclebin(x1,y1)
-        sodacan(foodx,foody)
+        sodacan(trash_x,trashy)
         dis_score(score-1)
         pygame.display.update()
  
