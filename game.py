@@ -77,7 +77,7 @@ def gameLoop():  # creating a function
 
             end = font_style.render("You Lost! Press Q-Quit or C-Play Again", True, red)
             fact = font_style.render(enviro_facts[index], True, blue)
-            end_score = font_style.render("Final score: " +str(score-1), True, black)
+            end_score = font_style.render("Final score: " +str(score-1), True, red)
             dis.blit(end, [170,300])
             dis.blit(end_score, [170,330])
             dis.blit(fact, [0,30])
