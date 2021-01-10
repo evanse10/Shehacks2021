@@ -15,10 +15,15 @@ dis_height = 600
 dis = pygame.display.set_mode((dis_width, dis_height))
 pygame.display.set_caption('collect the trash')
 
-image = pygame.image.load("recycling.jpg")
 background = pygame.image.load("naturebackground.jpg")
 nature = pygame.transform.rotozoom(background,0,1.75)
+
+recycling = pygame.image.load("recycling.jpg")
 soda = pygame.image.load("crushedcan.jpg")
+banana = pygame.image.load("bananapeel.png")
+##compost =
+##candy =
+##garbage =
  
 clock = pygame.time.Clock()
  
@@ -45,12 +50,16 @@ def dis_score(score):
     dis.blit(value, [0,0])
 
 def recyclebin(x,y):
-    binimage = pygame.transform.rotozoom(image,0,0.075)
+    binimage = pygame.transform.rotozoom(recycling,0,0.075)
     dis.blit(binimage,(x,y))
  
 def sodacan(x,y):
     crushsoda = pygame.transform.rotozoom(soda,0,0.050)
     dis.blit(crushsoda,(x,y))
+
+def bananapeel(x,y):
+    bananaskin = pygame.transform.rotozoom(banana,0,0.037)
+    dis.blit(bananaskin,(x,y))
  
 def gameLoop():  # creating a function
     game_over = False
@@ -65,7 +74,8 @@ def gameLoop():  # creating a function
     trash_x = round(random.randrange(0, dis_width - bin_block) / 10.0) * 10.0
     trashy = 0
 
-    bintype = 0 ##0 for recycling, 1 for compost
+    bintype = 0 ##0 for recycling, 1 for compost, 2 for garbage
+    trashtype = 0
    
     score = 1
  
@@ -105,7 +115,10 @@ def gameLoop():  # creating a function
                     bintype = 0
                 elif event.key == pygame.K_e:
                     ##change bin
-                    bintype = 1  
+                    bintype = 1
+                elif event.key == pygame.K_w:
+                    ##change bin
+                    bintype = 2
                 if event.key == pygame.K_LEFT:
                     x1_change = -bin_block
                     trash_change = 10*score**0.2
@@ -132,19 +145,29 @@ def gameLoop():  # creating a function
         trashy += trash_change
         dis.fill(white)
         dis.blit(nature,(0,0))
-        pygame.draw.rect(dis, blue, [trash_x, trashy, bin_block, bin_block])
-        pygame.draw.rect(dis, black, [x1, y1, bin_block, bin_block])
+        ##pygame.draw.rect(dis, blue, [trash_x, trashy, bin_block, bin_block])
+        ##pygame.draw.rect(dis, black, [x1, y1, bin_block, bin_block])
         if bintype == 0:
             recyclebin(x1,y1)
         elif bintype == 1:
-            pygame.draw.rect(dis,blue, [trash_x, trashy, bin_block,bin_block])
-        sodacan(trash_x,trashy)
+            pygame.draw.rect(dis,black, [x1, y1, bin_block,bin_block])
+        elif bintype == 2:
+            pygame.draw.rect(dis,blue, [x1, y1, bin_block,bin_block])
+        if trashtype == 0:
+            sodacan(trash_x,trashy)
+        elif trashtype == 1:
+            bananapeel(trash_x,trashy)
+        elif trashtype == 2:
+            pygame.draw.rect(dis,red, [trash_x, trashy, bin_block,bin_block])
+        
+        
         dis_score(score-1)
         pygame.display.update()
- 
-        if abs(x1 - trash_x)<=20 and abs(y1-trashy)<= 15:
+        
+        if abs(x1 - trash_x)<=15 and abs(y1-trashy)<= 15 and trashtype == bintype:
             trash_x = round(random.randrange(100, dis_width - bin_block - 100) / 10.0) * 10.0
             trashy = 0
+            trashtype = random.randrange(0,3)
             score +=1
         clock.tick(bin_speed)
  
